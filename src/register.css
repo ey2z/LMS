@@ -1,0 +1,78 @@
+/* Background Container */
+.background-container {
+    background-image: url('./assets/bg.png');
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* LoginPaper */
+  .login-paper {
+    padding: 32px;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    backdrop-filter: blur(9px);
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20px !important; /* Force the border radius to be applied */
+  }
+  
+  /* TextField */
+  .text-field {
+    width: 100%;
+    background-color: #e0e0e0;
+    height: 39px;
+    font-size: 18px;
+    color: #353333;
+    font-family: 'Inter', sans-serif;
+    border-radius: 8px; /* Match Paper's rounded corners */
+  }
+  
+  /* Fixing the outline of the TextField (Outlined variant) */
+  .text-field .MuiOutlinedInput-root {
+    border-radius: 8px; /* Match border-radius with Paper */
+    padding: 0; /* Remove padding to prevent misalignment */
+  }
+  
+  .text-field .MuiOutlinedInput-notchedOutline {
+    border-radius: 8px; /* Consistent radius for the outline */
+  }
+  
+  .text-field .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #052b74; /* Color of the outline when focused */
+  }
+  
+  /* TextField input box padding and border */
+  .text-field .MuiInputBase-input {
+    padding: 19px; /* Ensure proper padding for the input text */
+    box-sizing: border-box;
+  }
+  
+  /* Button */
+  .submit-button {
+    border-radius: 8px;
+    background-color: #052b74;
+    width: 100%;
+    height: 41px;
+    color: #fff;
+    font-size: 24px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 800;
+    text-align: center;
+  }
+  
+  .submit-button:hover {
+    background-color: #041e4c;
+  }
+  
+  /* Already Have an Account Button */
+  .already-have-an-account-btn {
+    text-align: right;
+  }
+  

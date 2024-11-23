@@ -1,10 +1,9 @@
 import React from 'react';
 import { Box, TextField, Button, Typography, Paper } from '@mui/material';
-import './login.css'; // Import the CSS file
+import './register.css'; // Import the CSS file
 import logoImage from './assets/logo.png';
-import bgImage from './assets/bg.png';
 
-const LoginForm: React.FC = () => {
+const RegisterForm: React.FC = () => {
   return (
     <div className="background-container">
       <Paper elevation={3} className="login-paper">
@@ -43,13 +42,13 @@ const LoginForm: React.FC = () => {
               variant="contained"
               className="submit-button"
             >
-              LOG IN
+              REGISTER
             </Button>
           </Box>
 
-          <Box mt={2} className="forgot-password-btn">
+          <Box mt={2} className="already-have-an-account-btn">
             <Button variant="text" color="secondary">
-              Forgot Password?
+              Already Have an Account?
             </Button>
           </Box>
         </form>
@@ -58,4 +57,4 @@ const LoginForm: React.FC = () => {
   );
 };
 
-export default LoginForm;
+export default RegisterForm;
