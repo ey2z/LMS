@@ -1,9 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, TextField, Button, Typography, Paper } from '@mui/material';
 import './register.css'; // Import the CSS file
 import logoImage from './assets/logo.png';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'; // Firebase Auth methods
+import { useNavigate } from 'react-router-dom'; // For navigation
 
 const RegisterForm: React.FC = () => {
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [error, setError] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
+  const navigate = useNavigate(); // This hook will allow us to redirect
+
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value);
+  };
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+
+    setLoading(true);
+    setError(''); // Reset any previous error
+
+    try {
+      const auth = getAuth();
+      // Create user with Firebase authentication
+      await createUserWithEmailAndPassword(auth, email, password);
+      setLoading(false);
+
+      // After successful registration, redirect to the dashboard page
+      navigate('/dashboard'); 
+    } catch (error: any) {
+      setLoading(false);
+      setError(error.message); // Display error message if registration fails
+    }
+  };
+
   return (
     <div className="background-container">
       <Paper elevation={3} className="login-paper">
@@ -11,7 +47,7 @@ const RegisterForm: React.FC = () => {
           <img src={logoImage} alt="PLM Logo" width={400} />
         </Box>
 
-        <form>
+        <form onSubmit={handleSubmit}>
           <Box sx={{ textAlign: 'left', width: '100%' }}>
             <Typography variant="h5">PLM Email</Typography>
           </Box>
@@ -21,6 +57,8 @@ const RegisterForm: React.FC = () => {
             fullWidth
             type="email"
             required
+            value={email}
+            onChange={handleEmailChange}
             className="text-field"
           />
 
@@ -33,22 +71,21 @@ const RegisterForm: React.FC = () => {
             fullWidth
             type="password"
             required
+            value={password}
+            onChange={handlePasswordChange}
             className="text-field"
           />
+
+          {error && <Typography color="error">{error}</Typography>} {/* Display error message */}
 
           <Box sx={{ position: 'relative', width: '100%', mt: 2 }}>
             <Button
               type="submit"
               variant="contained"
               className="submit-button"
+              disabled={loading}
             >
-              REGISTER
-            </Button>
-          </Box>
-
-          <Box mt={2} className="already-have-an-account-btn">
-            <Button variant="text" color="secondary">
-              Already Have an Account?
+              {loading ? 'Registering...' : 'REGISTER'}
             </Button>
           </Box>
         </form>
