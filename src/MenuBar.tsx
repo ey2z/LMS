@@ -57,7 +57,7 @@ function MenuBar() {
     <>
       <ThemeProvider theme={theme}>
         <Box>
-          <AppBar position="static" color="primary">
+          <AppBar position="static" color="primary" elevation={4} sx={{ width: "100%" }}>
             <Toolbar>
               {/* PLM Logo */}
               <Box sx={{ 
@@ -75,7 +75,7 @@ function MenuBar() {
                     component="img" 
                     sx={{ height: '50px', }}
                     alt="PLM Logo"
-                    src="https://lh4.googleusercontent.com/proxy/ek8tCM7cktoxKV5hpXDreSLlCjTqb6tG7ienWwfCOXqhbXbq-cd4oDIsfz_AwdSy0vkvP6xJMG19WAhcVKr6h6jV4EjEm7HVq1cMmUMwqvBszw" 
+                    src="https://upload.wikimedia.org/wikipedia/en/d/dc/PLM_Seal_2013.png" 
                   />
                   <Box sx={{
                     display: 'flex',
